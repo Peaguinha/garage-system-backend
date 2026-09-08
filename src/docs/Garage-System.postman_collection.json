@@ -1,0 +1,514 @@
+{
+  "info": {
+    "_postman_id": "19018466-c191-4e69-a19c-7283f1f7d63e",
+    "name": "Garage-System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "38493463"
+  },
+  "item": [
+    {
+      "name": "Saúde da API",
+      "item": [
+        {
+          "name": "Saúde da API",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzLCJyb2xlIjoiQ0xJRU5URSIsImlhdCI6MTc4NzY5ODA3OSwiZXhwIjoxNzg3NzAxNjc5fQ.f8wVhvnq_wc4PTMlArrRyuScLXIJrkw6XDhI2uV-M4I",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/health",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Autenticação",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cliente",
+      "item": [
+        {
+          "name": "Puxando Clientes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/clientes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "clientes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Puxando Cliente ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/clientes/6a9977553859f892c80e1b7d",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "clientes",
+                "6a9977553859f892c80e1b7d"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criando Cliente",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nome\": \"Pedro Henrique\",\r\n  \"cpf\": \"12345678901\",\r\n  \"telefone\": \"83999999999\",\r\n  \"email\": \"pedro@example.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/clientes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "clientes"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Veículo",
+      "item": [
+        {
+          "name": "Criar Veículo",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"placa\": \"ABC1D23\",\r\n  \"modelo\": \"Civic\",\r\n  \"marca\": \"Honda\",\r\n  \"ano\": 2022,\r\n  \"cor\": \"Preto\",\r\n  \"clienteId\": \"6a9977553859f892c80e1b7d\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/veiculos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "veiculos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Veículos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/veiculos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "veiculos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar Veículo pelo ID",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"cor\": \"Prata\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/veiculos/6a9977ce3859f892c80e1b7e",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "veiculos",
+                "6a9977ce3859f892c80e1b7e"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Puxar veículo pelo ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/veiculos/6a9977ce3859f892c80e1b7e",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "veiculos",
+                "6a9977ce3859f892c80e1b7e"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Serviços do Veículo",
+      "item": [
+        {
+          "name": "Puxar Serviços pelo ID",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Serviços",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Criar Ordem de Serviço",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzLCJyb2xlIjoiQ0xJRU5URSIsImlhdCI6MTc4ODUyNTU3MSwiZXhwIjoxNzg4NTI5MTcxfQ.Q73lX_eMcXmJUjqEoSjFCHbH2dJJ_gisGO1swgnsmIo",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"veiculoId\": \"6a9977ce3859f892c80e1b7e\",\r\n  \"mecanicoId\": \"6a9abb1e4135ad80330fa7eb\",\r\n  \"descricaoProblema\": \"Veículo apresenta ruído anormal no motor\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/ordens-servico",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "ordens-servico"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ID do Veículo",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Criar Serviço",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "POST http://localhost:3000/api/servicos",
+              "protocol": "POST http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "servicos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Adicionar serviço à OS",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhOWFjNWJkZTU2MDYwOGM1OGFiY2ZkYiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4ODUyODM1MiwiZXhwIjoxNzg4NTMxOTUyfQ.isdGYI9jF6llm5AQHylRbGo-c8Y8viDeASQcz0sLQ2U",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"servicoId\": \"6a9ac706e560608c58abcfdc\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/ordens-servico/6a9abc23a128a844453524ef/servicos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "ordens-servico",
+                "6a9abc23a128a844453524ef",
+                "servicos"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Peças",
+      "item": [
+        {
+          "name": "Criar Peça",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhOWFjNWJkZTU2MDYwOGM1OGFiY2ZkYiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4ODUyODM1MiwiZXhwIjoxNzg4NTMxOTUyfQ.isdGYI9jF6llm5AQHylRbGo-c8Y8viDeASQcz0sLQ2U",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/pecas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "pecas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Peças",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Adicionar Peça à OS",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Usuário",
+      "item": [
+        {
+          "name": "Criar Usuário",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"João da Silva\",\r\n    \"email\": \"joao.mecanico@garage.com\",\r\n    \"senha\": \"123456\",\r\n    \"role\": \"MECANICO\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/auth/usuarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "auth",
+                "usuarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar Admin",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/auth/usuarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "auth",
+                "usuarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login de Usuário",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Transição de Diagnóstico",
+      "item": [
+        {
+          "name": "Alterando diagnóstico",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhOWFjNWJkZTU2MDYwOGM1OGFiY2ZkYiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4ODUyODM1MiwiZXhwIjoxNzg4NTMxOTUyfQ.isdGYI9jF6llm5AQHylRbGo-c8Y8viDeASQcz0sLQ2U",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"status\": \"EM_DIAGNOSTICO\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/ordens-servico/6a9abc23a128a844453524ef/status",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "ordens-servico",
+                "6a9abc23a128a844453524ef",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
