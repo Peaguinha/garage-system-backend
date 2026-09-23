@@ -1057,13 +1057,13 @@ Durante o desenvolvimento foram realizados testes envolvendo:
 ## 1. Clonar o projeto
 
 ```bash
-git clone https://github.com/Peaguinha/garage-system.git
+git clone https://github.com/Peaguinha/garage-system-backend.git
 ```
 
 ## 2. Entrar na pasta
 
 ```bash
-cd garage-system
+cd garage-system-backend
 ```
 
 ## 3. Instalar dependências
