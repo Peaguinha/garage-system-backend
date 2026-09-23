@@ -1,22 +1,16 @@
 # 🚗 Garage System
 
-Sistema de gerenciamento de oficina mecânica desenvolvido como projeto acadêmico, com foco na construção de um backend completo utilizando Node.js, Express, MongoDB, JWT e GraphQL — e, na Fase 2, de um frontend em React consumindo essa API.
+Sistema de gerenciamento de oficina mecânica desenvolvido como projeto acadêmico, com foco na construção de um backend completo utilizando Node.js, Express, MongoDB, JWT e GraphQL.
 
 O sistema permite o gerenciamento de clientes, veículos, serviços, peças e ordens de serviço, além de possuir autenticação, autorização por perfil e regras de negócio para o fluxo de atendimento da oficina.
+
+Este repositório contém apenas o **backend**. O frontend (React) vive em um repositório separado: [garage-system-frontend](https://github.com/Peaguinha/garage-system-frontend).
 
 ---
 
 ## 📋 Sobre o projeto
 
 O **Garage System** tem como objetivo centralizar o gerenciamento das operações de uma oficina mecânica.
-
-O repositório é organizado como um **monorepo**, com dois projetos independentes lado a lado:
-
-```text
-garage-system/
-├── backend/     Fase 1 — API REST + GraphQL, Node/Express/MongoDB (concluída)
-└── frontend/    Fase 2 — Interface web em React (em desenvolvimento)
-```
 
 O backend disponibiliza duas formas de acesso aos dados:
 
@@ -41,14 +35,12 @@ O sistema também possui autenticação baseada em JWT e controle de acesso atra
 - API RESTful;
 - API GraphQL;
 - Consultas relacionadas entre entidades;
-- Persistência dos dados utilizando MongoDB;
-- Interface web em React consumindo a API (Fase 2, em desenvolvimento).
+- Persistência dos dados utilizando MongoDB.
 
 ---
 
 # 🛠️ Tecnologias utilizadas
 
-### Backend
 - **Node.js**
 - **Express**
 - **MongoDB**
@@ -58,15 +50,6 @@ O sistema também possui autenticação baseada em JWT e controle de acesso atra
 - **GraphQL**
 - **Apollo Server**
 - **dotenv**
-
-### Frontend
-- **React**
-- **Vite**
-- **React Router**
-- **Context API** (estado de autenticação/tema)
-- **CSS puro**, com os tokens de design extraídos do protótipo
-
-### Geral
 - **Git**
 - **GitHub**
 
@@ -74,9 +57,9 @@ O sistema também possui autenticação baseada em JWT e controle de acesso atra
 
 # 🏗️ Arquitetura
 
-O projeto utiliza uma arquitetura baseada na separação de responsabilidades entre rotas, controllers, services, repositories e models, no backend, e uma camada de frontend em React que consome essa API pela borda.
+O projeto utiliza uma arquitetura baseada na separação de responsabilidades entre rotas, controllers, services, repositories e models.
 
-Fluxo principal (backend):
+Fluxo principal:
 
 ```text
 Cliente
@@ -133,76 +116,50 @@ O GraphQL funciona como uma camada adicional de acesso aos dados:
                     MongoDB
 ```
 
-E o frontend (Fase 2) se encaixa como um consumidor da API REST, à frente de tudo isso:
-
-```text
-   Navegador
-       │
-       ▼
-  React (SPA)
-       │
-       ▼
-   REST API  ──────────── GraphQL API (usuários)
-       │                       │
-       └───────────┬───────────┘
-                   ▼
-              Application
-                   │
-                   ▼
-                MongoDB
-```
-
 ---
 
 # 📁 Estrutura do projeto
 
-```text
-garage-system/
-├── backend/
-│   └── src/
-│       ├── config/
-│       ├── controllers/
-│       ├── graphql/
-│       │   ├── index.js
-│       │   ├── typeDefs.js
-│       │   └── resolvers.js
-│       ├── middlewares/
-│       │   ├── auth.js
-│       │   ├── authMiddleware.js
-│       │   └── roleMiddleware.js
-│       ├── models/
-│       │   ├── Cliente.js
-│       │   ├── Veiculo.js
-│       │   ├── Servico.js
-│       │   ├── Peca.js
-│       │   ├── OrdemServico.js
-│       │   └── Usuario.js
-│       ├── routes/
-│       │   ├── authRoutes.js
-│       │   ├── clienteRoutes.js
-│       │   ├── veiculoRoutes.js
-│       │   ├── servicos.routes.js
-│       │   ├── pecas.routes.js
-│       │   └── ordemServicoRoutes.js
-│       ├── services/
-│       ├── repositories/
-│       └── server.js
-│
-└── frontend/
-    └── src/
-        ├── app/                 # rotas, layout (rail/topbar/bottom-nav), AuthContext
-        ├── features/
-        │   ├── auth/  dashboard/  clientes/  veiculos/
-        │   └── ordens-servico/  servicos/  pecas/  usuarios/
-        ├── shared/
-        │   ├── components/      # Icon, RequireRole, FeaturePlaceholder...
-        │   ├── api/              # cliente HTTP (client.js)
-        │   ├── hooks/             # useAuth, useTheme
-        │   └── styles/             # tokens.css + base.css, extraídos do protótipo
-        └── main.jsx
-```
+A estrutura principal do backend é organizada da seguinte maneira:
 
-Detalhe da estrutura do frontend em [🖥️ Frontend (Fase 2)](#-frontend-fase-2), mais abaixo.
+```text
+src/
+├── config/
+│
+├── controllers/
+│
+├── graphql/
+│   ├── index.js
+│   ├── typeDefs.js
+│   └── resolvers.js
+│
+├── middlewares/
+│   ├── auth.js
+│   ├── authMiddleware.js
+│   └── roleMiddleware.js
+│
+├── models/
+│   ├── Cliente.js
+│   ├── Veiculo.js
+│   ├── Servico.js
+│   ├── Peca.js
+│   ├── OrdemServico.js
+│   └── Usuario.js
+│
+├── routes/
+│   ├── authRoutes.js
+│   ├── clienteRoutes.js
+│   ├── veiculoRoutes.js
+│   ├── servicos.routes.js
+│   ├── pecas.routes.js
+│   └── ordemServicoRoutes.js
+│
+├── services/
+│
+├── repositories/
+│
+└── server.js
+```
 
 ---
 
@@ -1029,8 +986,6 @@ query {
 }
 ```
 
-> ⚠️ Não existe rota REST equivalente para usuários — só GraphQL. É um ponto em aberto para a Fase 2 (ver seção do frontend, abaixo).
-
 ---
 
 # 🧠 Regras de negócio
@@ -1078,7 +1033,7 @@ O sistema possui diversas validações.
 
 # 🧪 Testes
 
-Durante o desenvolvimento da Fase 1 foram realizados testes envolvendo:
+Durante o desenvolvimento foram realizados testes envolvendo:
 
 - Login;
 - Geração de JWT;
@@ -1097,103 +1052,43 @@ Durante o desenvolvimento da Fase 1 foram realizados testes envolvendo:
 
 ---
 
-# 🖥️ Frontend (Fase 2)
-
-Interface web em **React + Vite**, consumindo a API REST documentada acima. Vive em [`frontend/`](frontend).
-
-### Por que essa stack
-
-| Camada | Escolha | Por quê |
-|---|---|---|
-| Build tool | Vite | Setup rápido, HMR, padrão de mercado para SPA React |
-| Estado | Context API + hooks (sem Redux) | Estado simples o suficiente — `AuthContext` + estado local por feature |
-| Estilo | CSS puro, tokens extraídos do protótipo | A identidade visual já estava pronta no protótipo V2; reaproveitar em vez de recriar em outro framework |
-| Dados | REST (ver endpoints acima) | Mais simples de consumir por feature, de forma independente |
-| Roteamento | React Router | Padrão para SPAs com múltiplas telas |
-| Lint/format | oxlint + Prettier | `create-vite` já vem com oxlint (Rust, rápido) |
-
-### Parâmetro visual
-
-O frontend segue como referência de tela e identidade visual o protótipo estático `garage-system-Prototipo/V2-GarageSystem.html` (fora deste repositório, no hub do projeto). Os tokens de cor/tipografia e as classes de componente desse protótipo foram extraídos para `frontend/src/shared/styles/`.
-
-### Estrutura
-
-```text
-frontend/
-├── src/
-│   ├── app/
-│   │   ├── AppRoutes.jsx      # todas as rotas da aplicação
-│   │   ├── AppLayout.jsx      # rail (desktop) / drawer + bottom-nav (mobile)
-│   │   ├── AuthContext.jsx    # login real (POST /api/auth/login), token, sessão
-│   │   ├── RequireAuth.jsx    # guarda de rota: sem sessão → /login
-│   │   └── navConfig.js       # itens do menu principal
-│   ├── features/
-│   │   ├── auth/               # LoginPage — implementado
-│   │   ├── dashboard/           # placeholder
-│   │   ├── clientes/            # placeholder
-│   │   ├── veiculos/            # placeholder
-│   │   ├── ordens-servico/      # placeholder (lista/kanban + detalhe)
-│   │   ├── servicos/            # placeholder
-│   │   ├── pecas/               # placeholder
-│   │   └── usuarios/            # placeholder + guarda de papel (ADMIN)
-│   └── shared/
-│       ├── components/         # Icon, IconSprite, RequireRole, FeaturePlaceholder
-│       ├── api/                 # client.js — cliente fetch único (baseURL + JWT)
-│       ├── hooks/                # useAuth, useTheme
-│       └── styles/                # tokens.css + base.css (extraídos do protótipo)
-└── main.jsx
-```
-
-**Regra de ouro:** um componente usado por mais de uma feature vai para `shared/components/`, nunca duplicado dentro de cada `features/<nome>/`.
-
-### Autenticação no frontend
-
-O `AuthContext` chama `POST /api/auth/login` de verdade (mesmo contrato documentado em [🔐 Autenticação](#-autenticação)), guarda o token em memória + `localStorage`, e injeta o header `Authorization: Bearer <token>` em toda chamada feita através de `shared/api/client.js`. Rotas sem sessão redirecionam para `/login`; telas/ações restritas a um papel usam `<RequireRole roles={[...]}>` ou o helper `can(role, roles)`, espelhando o `roleMiddleware` do backend.
-
-### Exceção: tela de Usuários
-
-Como não existe rota REST para usuários (só GraphQL — ver aviso acima), quem pegar essa feature decide entre adicionar `GET /api/usuarios` (ADMIN-only) no backend ou consumir GraphQL só nessa tela.
-
-### Features e responsáveis
-
-Atribuição sugerida com base em quem construiu o módulo equivalente no backend na Fase 1 — ajustável pela equipe.
-
-| # | Feature | Endpoints | Responsável | Status |
-|---|---|---|---|---|
-| F1 | Autenticação & Shell | `POST /api/auth/login` | Pedro Henrique | ✅ Pronto |
-| F2 | Dashboard | `GET /api/ordens-servico`, `GET /api/pecas` | Washingtton Lucena | ⏳ Placeholder |
-| F3 | Clientes & Veículos | `/api/clientes`, `/api/veiculos` | Igor Araújo | ⏳ Placeholder |
-| F4 | Ordens de Serviço | `/api/ordens-servico` | Kaik | ⏳ Placeholder |
-| F5 | Serviços & Peças | `/api/servicos`, `/api/pecas` | Israel Neto | ⏳ Placeholder |
-| F6 | Usuários | GraphQL `usuarios` (ou nova rota REST) | Nathan Esley | ⏳ Placeholder |
-
-Detalhe completo do plano (critérios de pronto, fluxo de contribuição): documento **Garage System - Fase 2 Frontend.md**, no hub do projeto no Obsidian.
-
----
-
 # ⚙️ Como executar
 
 ## 1. Clonar o projeto
 
 ```bash
 git clone https://github.com/Peaguinha/garage-system.git
+```
+
+## 2. Entrar na pasta
+
+```bash
 cd garage-system
 ```
 
-## 2. Backend
+## 3. Instalar dependências
 
 ```bash
-cd backend
 npm install
 ```
 
-Crie um arquivo `.env` (exemplo):
+## 4. Configurar variáveis de ambiente
+
+Crie um arquivo:
+
+```text
+.env
+```
+
+Exemplo:
 
 ```env
 PORT=3000
 MONGODB_URI=sua_connection_string
 JWT_SECRET=sua_chave_secreta
 ```
+
+## 5. Executar
 
 ```bash
 npm run dev
@@ -1204,23 +1099,6 @@ O servidor será iniciado em:
 ```text
 http://localhost:3000
 ```
-
-## 3. Frontend
-
-```bash
-cd frontend
-npm install
-cp .env.example .env
-npm run dev
-```
-
-A aplicação será iniciada em:
-
-```text
-http://localhost:5173
-```
-
-Precisa do backend rodando em paralelo para o login e as chamadas de API funcionarem.
 
 ---
 
@@ -1259,15 +1137,7 @@ main
     ├── feature/clientes-veiculos
     ├── feature/servicos-pecas
     ├── feature/ordens-servico
-    ├── feature/graphql
-    │
-    ├── chore/monorepo-restructure         (Fase 2 — backend/ + frontend/)
-    ├── feature/frontend-auth-shell
-    ├── feature/frontend-dashboard
-    ├── feature/frontend-clientes-veiculos
-    ├── feature/frontend-ordens-servico
-    ├── feature/frontend-servicos-pecas
-    └── feature/frontend-usuarios
+    └── feature/graphql
 ```
 
 Fluxo utilizado:
@@ -1298,10 +1168,6 @@ A branch `develop` concentra o desenvolvimento e integração das funcionalidade
                          GARAGE SYSTEM
                               │
                               ▼
-                       ┌─────────────┐
-                       │  REACT (SPA) │
-                       └──────┬──────┘
-                              │
                        ┌─────────────┐
                        │    LOGIN    │
                        └──────┬──────┘
@@ -1346,7 +1212,7 @@ A branch `develop` concentra o desenvolvimento e integração das funcionalidade
 
 # 🚀 Resultado
 
-Ao final da Fase 1, o Garage System possuía um backend funcional para gerenciamento de uma oficina mecânica.
+Ao final da Fase 1, o Garage System possui um backend funcional para gerenciamento de uma oficina mecânica.
 
 A aplicação conta com:
 
@@ -1369,7 +1235,7 @@ A aplicação conta com:
 - Persistência de dados;
 - Estrutura organizada para evolução futura.
 
-Na Fase 2, o projeto virou um monorepo (`backend/` + `frontend/`) e ganhou o esqueleto funcional do frontend em React: login real, layout responsivo, roteamento protegido por sessão e por papel, e a identidade visual do protótipo já reaproveitada em CSS — pronto para as 6 features do time preencherem o conteúdo de cada tela.
+O frontend que consome essas APIs é desenvolvido separadamente no repositório [garage-system-frontend](https://github.com/Peaguinha/garage-system-frontend).
 
 ---
 
@@ -1409,24 +1275,4 @@ Principais componentes implementados:
 ✅ Ordens de Serviço
 ✅ Regras de negócio
 ✅ GraphQL
-```
-
-**Fase 2 — Frontend em React**
-
-```text
-🟡 Em andamento
-```
-
-Principais componentes:
-
-```text
-✅ Monorepo (backend/ + frontend/)
-✅ Scaffold Vite + React
-✅ Tokens visuais extraídos do protótipo
-✅ Autenticação & Shell (F1)
-⬜ Dashboard (F2)
-⬜ Clientes & Veículos (F3)
-⬜ Ordens de Serviço (F4)
-⬜ Serviços & Peças (F5)
-⬜ Usuários (F6)
 ```
