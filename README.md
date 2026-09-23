@@ -4,6 +4,8 @@ Sistema de gerenciamento de oficina mecânica desenvolvido como projeto acadêmi
 
 O sistema permite o gerenciamento de clientes, veículos, serviços, peças e ordens de serviço, além de possuir autenticação, autorização por perfil e regras de negócio para o fluxo de atendimento da oficina.
 
+Este repositório contém apenas o **backend**. O frontend (React) vive em um repositório separado: [garage-system-frontend](https://github.com/Peaguinha/garage-system-frontend).
+
 ---
 
 ## 📋 Sobre o projeto
@@ -1055,13 +1057,13 @@ Durante o desenvolvimento foram realizados testes envolvendo:
 ## 1. Clonar o projeto
 
 ```bash
-git clone https://github.com/Peaguinha/garage-system.git
+git clone https://github.com/Peaguinha/garage-system-backend.git
 ```
 
 ## 2. Entrar na pasta
 
 ```bash
-cd garage-system
+cd garage-system-backend
 ```
 
 ## 3. Instalar dependências
@@ -1233,7 +1235,7 @@ A aplicação conta com:
 - Persistência de dados;
 - Estrutura organizada para evolução futura.
 
-O projeto também estabelece a base para uma futura camada frontend, que poderá consumir as APIs desenvolvidas nesta etapa.
+O frontend que consome essas APIs é desenvolvido separadamente no repositório [garage-system-frontend](https://github.com/Peaguinha/garage-system-frontend).
 
 ---
 
